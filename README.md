@@ -1,4 +1,4 @@
-# My first year course work
+# My-first year coursework
 
 ## Pазработка программы учета сведений об игроках футбольной команды
 
