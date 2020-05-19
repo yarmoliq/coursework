@@ -9,7 +9,9 @@ User::User(std::string ID, User::AccessLevel AL, std::string login,
     _password        = password;
     _name            = name;
 }
+
 User::~User() {}
+
 
 std::string User::getID() const                  { return _ID; }
 
