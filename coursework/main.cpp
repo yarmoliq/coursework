@@ -1,5 +1,7 @@
 #include <iostream>
+
 #include "myInput.h"
+#include "Arguments.h"
 
 int main()
 {
