@@ -1,19 +1,32 @@
 #include "User.h"
 
-User::User(std::string ID, User::AccessLevel AL, std::string login,
-           std::string password, std::string name)
+
+//User::User(std::string id, AccessLevel al, std::string login,
+//    std::string password, std::string name)
+//{
+//    _id = id;
+//    _accessLevel = al;
+//    _login = login;
+//    _password = password;
+//    _name = name;
+//}
+
+//std::vector<std::string> User::convertObject() const
+//{
+//    
+//}
+
+User::User(const std::string(&params)[5])
 {
-    _ID              = ID;
-    _accessLevel     = AL;
-    _login           = login;
-    _password        = password;
-    _name            = name;
+    _id = params[0];
+    _accessLevel = (User::AccessLevel)std::stoi(params[1]);
+    _login = params[2];
+    _password = params[3];
+    _name = params[4];
 }
 
 User::~User() {}
 
-
-std::string User::getID() const                  { return _ID; }
 
 User::AccessLevel User::getAccessLevel() const   { return _accessLevel; }
 

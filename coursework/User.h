@@ -4,21 +4,15 @@
 #define _USER_H_
 
 #include <string>
-//#include <vector>
+#include <vector>
 
-class User
+#include "Object.h"
+
+class User : public Object
 {
 public:
 
-	enum class AccessLevel { REGISTERED_USER, MODERATOR, ADMIN };
-
-	User(std::string, AccessLevel, std::string,
-		 std::string, std::string);
-
-	~User();
-
-
-	std::string getID() const;
+	enum class AccessLevel { REGISTERED_USER, MODERATOR, ADMIN };	
 
 	AccessLevel getAccessLevel() const;
 
@@ -27,17 +21,9 @@ public:
 
 	std::string getName() const;
 
-
-	// [not sure][todo] can be changed only from DB
-	//void setID(std::string); // delete
-	//void setAccessLevel(AccessLevel);
-	//void setLogin(std::string);
-	//void setPassword(std::string);
-	//void setName(std::string);
-
-private:
-	// // [not sure][todo] all this things under should be const
-	std::string _ID;
+	//virtual std::vector<std::string> convertObject() const;
+	
+protected:
 
 	AccessLevel _accessLevel;
 
@@ -45,10 +31,14 @@ private:
 	std::string _password;
 
 	std::string _name;
-	
 
-	// [not sure][todo] friend class DB // nah. only manager
-	// [not sure][todo] friend class ManageUser
+	
+	//User(std::string id, AccessLevel al, std::string login,
+	//	std::string password, std::string name);
+	User(const std::string (&params)[5]);
+	virtual ~User();
+
+	// [todo] friend class ManageUser
 };
 
 #endif _USER_H_
