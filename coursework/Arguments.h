@@ -7,24 +7,20 @@
 #include <iostream>
 #include <stdexcept>
 
-template<int N>
-class Arguments
+class Arguments final
 {
-protected:
-	std::string arguments[N];
 public:
-	Arguments(const std::string(&args)[N])
-	{
-		for (int i = 0; i < N; ++i)
-			arguments[i] = args[i];
-	}
 
-	std::string operator[](const int i) const
-	{
-		if (i < 0 or i >= N)
-			throw std::out_of_range("Arguments index is out of range!");
-		return arguments[i];
-	}
+	Arguments(const int n, const std::string *const args);
+	Arguments(const Arguments &other);
+	std::string operator[](const int i) const;
+	~Arguments();
+
+private:
+
+	int _argsNumber;
+	std::string* _arguments;
+	
 };
 
 

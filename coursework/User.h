@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "Object.h"
+#include "Arguments.h"
 
 class User : public Object
 {
@@ -21,7 +22,9 @@ public:
 
 	std::string getName() const;
 
-	//virtual std::vector<std::string> convertObject() const;
+	virtual Arguments convertObject() const;
+	
+	virtual ~User();
 	
 protected:
 
@@ -32,13 +35,10 @@ protected:
 
 	std::string _name;
 
-	
-	//User(std::string id, AccessLevel al, std::string login,
-	//	std::string password, std::string name);
-	User(const std::string (&params)[5]);
-	virtual ~User();
+	User(const Arguments& args);
 
 	// [todo] friend class ManageUser
+	friend class UserManager;
 };
 
 #endif _USER_H_

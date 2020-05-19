@@ -6,13 +6,15 @@
 #include <vector>
 #include <string>
 
+#include "Arguments.h"
+
 class Object
 {
 public:
 
 	std::string getID() const;
 
-	virtual std::vector<std::string> convertObject() const = 0;
+	virtual Arguments convertObject() const = 0;
 	//virtual void initializeWith(const  std::vector<std::string>&) = 0;
 
 protected:
