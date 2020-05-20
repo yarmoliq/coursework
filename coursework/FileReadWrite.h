@@ -15,7 +15,7 @@ public:
 	static bool write(std::string fileName, const Arguments& args);
 	static bool read(std::string fileName, Arguments* const args);
 private:
-	static bool dirExists(const std::string& dirName_in);
+	//static bool dirExists(const std::string& dirName_in);
 };
 
 

@@ -18,7 +18,7 @@ public:
 	User(const Arguments& args);
 	virtual ~User();
 
-	virtual Arguments convertObject() const override;
+	//virtual Arguments convertObject() const override;
 	
 
 	AccessLevel getAccessLevel() const;

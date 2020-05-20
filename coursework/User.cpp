@@ -14,17 +14,17 @@ User::User(const Arguments &args)
 
 User::~User() {}
 
-Arguments User::convertObject() const
-{
-    std::string args[5];
-    args[0] = _id;
-    args[1] = std::to_string((int)_accessLevel);
-    args[2] = _login;
-    args[3] = _password;
-    args[4] = _name;
-    
-    return Arguments(5, args);
-}
+//Arguments User::convertObject() const
+//{
+//    std::string args[5];
+//    args[0] = _id;
+//    args[1] = std::to_string((int)_accessLevel);
+//    args[2] = _login;
+//    args[3] = _password;
+//    args[4] = _name;
+//    
+//    return Arguments(5, args);
+//}
 
 
 User::AccessLevel User::getAccessLevel() const   { return _accessLevel; }

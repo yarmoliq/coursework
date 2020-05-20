@@ -14,7 +14,7 @@ public:
 
 	std::string getID() const;
 
-	virtual Arguments convertObject() const = 0;
+	//virtual Arguments convertObject() const = 0;
 
 	Object();
 	virtual ~Object();

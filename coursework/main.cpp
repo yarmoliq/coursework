@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "myInput.h"
-#include "UserManager.h"
-#include "FileReadWrite.h"
+
+#include "UserCollection.h"
 
 int main()
 {
@@ -31,6 +31,18 @@ int main()
 	//	//cout << u.get
 	//}
 	//catch (const char* msg) { cout << msg; }
+
+	Collection* c = new UserCollection();
+
+	c->name = "users-test";
+
+	//vector<string> x{ "1778", "1", "someones-login", "thisISpassword", "Sobaka Licaya" };
+	//
+	//User user = User(x);
+
+	User* user = dynamic_cast<User*>(c->getByID("1778"));
+
+	true;
 
 	return 0;
 }
