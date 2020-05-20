@@ -2,28 +2,35 @@
 
 #include "myInput.h"
 #include "UserManager.h"
+#include "FileReadWrite.h"
 
 int main()
 {
-	//std::cout << "works";
+	// writing test
+
+	//std::string a[5];
+	//a[0] = "228";
+	//a[1] = "1";
+	//a[2] = "yarmoliq";
+	//a[3] = "maximTitan";
+	//a[4] = "Maxim Yarmolik";
+	//Arguments args(5, a);
+	//User newuser(args);
 	//
-	std::string a[5];
-	a[0] = "1337";
-	a[1] = "1";
-	a[2] = "sheepang";
-	a[3] = "maximTitan";
-	a[4] = "Maxim Yarmolik";
+	//cout << FileReadWrite::write("./DB/",a[0]+".txt", newuser.convertObject());
 
-	Arguments args(5, a);
 
-	User u = UserManager::createUser(args);
+	// reading test
 
-	cout << u.getID() << endl;
-	User::AccessLevel al = u.getAccessLevel();
-	cout << u.getLogin() << endl;
-	cout << u.getPassword() << endl;
-	cout << u.getName() << endl;
-
+	//Arguments args;
 	//
+	//cout << FileReadWrite::read(". nj/DB/", "228.txt", &args) << endl;
+	//
+	//try {
+	//	User u(args);
+	//	//cout << u.get
+	//}
+	//catch (const char* msg) { cout << msg; }
+
 	return 0;
 }

@@ -22,6 +22,7 @@
     <ClCompile Include="Arguments.cpp" />
     <ClCompile Include="Collection.cpp" />
     <ClCompile Include="DataBase.cpp" />
+    <ClCompile Include="FileReadWrite.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="User.cpp" />
@@ -31,6 +32,7 @@
     <ClInclude Include="Arguments.h" />
     <ClInclude Include="Collection.h" />
     <ClInclude Include="DataBase.h" />
+    <ClInclude Include="FileReadWrite.h" />
     <ClInclude Include="myInput.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="User.h" />

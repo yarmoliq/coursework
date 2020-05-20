@@ -7,9 +7,13 @@
 #include <vector>
 #include <string>
 
-class DataBase
-{
+#include "Collection.h"
 
+class DataBase // final
+{
+	// vector<Collection>
+
+	// storing collections info
 };
 
 

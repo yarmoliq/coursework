@@ -15,16 +15,18 @@ public:
 
 	enum class AccessLevel { REGISTERED_USER, MODERATOR, ADMIN };	
 
+	User(const Arguments& args);
+	virtual ~User();
+
+	virtual Arguments convertObject() const override;
+	
+
 	AccessLevel getAccessLevel() const;
 
 	std::string getLogin() const;
 	std::string getPassword() const;
 
 	std::string getName() const;
-
-	virtual Arguments convertObject() const;
-	
-	virtual ~User();
 	
 protected:
 
@@ -35,10 +37,10 @@ protected:
 
 	std::string _name;
 
-	User(const Arguments& args);
 
-	// [todo] friend class ManageUser
-	friend class UserManager;
+
+	//friend class UserManager;
+	// probably DB. not usermanager
 };
 
 #endif _USER_H_

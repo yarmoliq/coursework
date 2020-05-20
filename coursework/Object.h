@@ -15,14 +15,14 @@ public:
 	std::string getID() const;
 
 	virtual Arguments convertObject() const = 0;
-	//virtual void initializeWith(const  std::vector<std::string>&) = 0;
+
+	Object();
+	virtual ~Object();
 
 protected:
 	
 	std::string _id;
 
-	Object();
-	virtual ~Object();
 
 	// [todo][not sure, obviously] friend class [???]
 };
