@@ -29,6 +29,11 @@ bool FileReadWrite::fileExists(const std::string& fileName)
 	return exists;
 }
 
+bool FileReadWrite::fileExists(const std::string& dirName, const std::string& fileName)
+{
+	return fileExists(dirName+fileName);
+}
+
 bool FileReadWrite::write(std::string dir, std::string fileName, const Arguments& args)
 {
 	return write(dir + fileName, args);
