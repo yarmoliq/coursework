@@ -1,20 +1,8 @@
 #include "UserCollection.h"
 
-UserCollection::UserCollection()
-{
-}
+UserCollection::UserCollection() {}
 
-UserCollection::~UserCollection()
-{
-}
-
-Object* UserCollection::convert(const Arguments& args)
-{
-	if (args.size() != 5)
-		return NULL;
-
-	return new User(args);
-}
+UserCollection::~UserCollection() {}
 
 Arguments UserCollection::convert(const Object* const object)
 {
@@ -22,7 +10,7 @@ Arguments UserCollection::convert(const Object* const object)
 	User* user = dynamic_cast<User*>(nonConstObj);
 
 	if (user == NULL)
-		throw "NOT A USER, YOU, BABYSITTER :(";
+		throw "NOT A USER :(";
 
 	std::string* args = new std::string[5];
 
@@ -35,3 +23,10 @@ Arguments UserCollection::convert(const Object* const object)
 	return Arguments(5, args);
 }
 
+Object* UserCollection::convert(const Arguments& args)
+{
+	if (args.size() != 5)
+		return NULL;
+
+	return new User(args);
+}

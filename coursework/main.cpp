@@ -32,15 +32,21 @@ int main()
 	//}
 	//catch (const char* msg) { cout << msg; }
 
-	Collection* c = new UserCollection();
-
-	c->name = "users-test";
-
-	//vector<string> x{ "1778", "1", "someones-login", "thisISpassword", "Sobaka Licaya" };
+	//Collection* c = new UserCollection();
 	//
-	//User user = User(x);
+	//c->name = "users-test";
+	//
+	////vector<string> x{ "1778", "1", "someones-login", "thisISpassword", "Sobaka Licaya" };
+	////
+	////User user = User(x);
+	//
+	//User* user = dynamic_cast<User*>(c->getByID("1778"));
 
-	User* user = dynamic_cast<User*>(c->getByID("1778"));
+	string path = "C:/Users/yarmo/Desktop/fff/file.txt";
+
+	//cout << FileReadWrite::fileExists(path);
+
+	cout << FileReadWrite::deleteFile(path);
 
 	true;
 

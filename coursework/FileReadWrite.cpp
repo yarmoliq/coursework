@@ -3,18 +3,31 @@
 #include <fstream>
 #include <vector>
 
-//bool FileReadWrite::dirExists(const std::string& dirName_in)
-//{
-//	DWORD ftyp = GetFileAttributesA(dirName_in.c_str());
-//
-//	if (ftyp == INVALID_FILE_ATTRIBUTES)
-//		return false;  //something is wrong with your path!
-//
-//	if (ftyp & FILE_ATTRIBUTE_DIRECTORY)
-//		return true;   // this is a directory!
-//
-//	return false;    // this is not a directory!
-//}
+bool FileReadWrite::dirExists(const std::string& dirName)
+{
+	DWORD ftyp = GetFileAttributesA(dirName.c_str());
+
+	if (ftyp == INVALID_FILE_ATTRIBUTES)
+		return false;  //something is wrong with your path!
+
+	if (ftyp & FILE_ATTRIBUTE_DIRECTORY)
+		return true;   // this is a directory!
+
+	return false;    // this is not a directory!
+}
+
+bool FileReadWrite::fileExists(const std::string& fileName)
+{
+	std::fstream fileStream(fileName);
+
+	bool exists = false;
+
+	if (fileStream.is_open())
+		exists = true;
+
+	fileStream.close();
+	return exists;
+}
 
 bool FileReadWrite::write(std::string dir, std::string fileName, const Arguments& args)
 {
@@ -63,4 +76,14 @@ bool FileReadWrite::read(std::string fileName, Arguments* const args)
 
 	input.close();
 	return true;
+}
+
+bool FileReadWrite::deleteFile(const std::string& fileName)
+{
+	int result = remove(fileName.c_str()); // returns 0 if file was deleted
+
+	if (result == 0)
+		return true;
+
+	return false;
 }

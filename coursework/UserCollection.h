@@ -10,7 +10,7 @@ public:
 	virtual ~UserCollection();
 
 //protected:
-	virtual Object* convert(const Arguments& args) override;
 	virtual Arguments convert(const Object* const object) override;
+	virtual Object* convert(const Arguments& args) override;
 };
 
