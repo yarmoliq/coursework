@@ -18,13 +18,14 @@ public:
 	User(const Arguments& args);
 	virtual ~User();
 
-	//virtual Arguments convertObject() const override;
-	
+	Arguments arguments() const override; 
+	// mb make protected/private so only DB can access
+	// because you can get the password in there	
 
 	AccessLevel getAccessLevel() const;
 
 	std::string getLogin() const;
-	std::string getPassword() const;
+	std::string getPassword() const; // mb change to "matches password"
 
 	std::string getName() const;
 	

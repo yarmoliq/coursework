@@ -12,19 +12,20 @@ class Object
 {
 public:
 
-	std::string getID() const;
+	unsigned int getID() const;
 
-	//virtual Arguments convertObject() const = 0;
+	// converts an object into Arguments
+	virtual Arguments arguments() const = 0;
 
-	Object();
-	virtual ~Object();
+	//Object();
+	//virtual ~Object();
 
 protected:
 	
-	std::string _id;
+	unsigned int _id = 0;
 
 
-	// [todo][not sure, obviously] friend class [???]
+	// [todo][not sure, obviously] friend class ?DB
 };
 
 

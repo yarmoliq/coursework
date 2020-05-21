@@ -14,6 +14,7 @@ class FileReadWrite final
 public:
 	static bool dirExists(const std::string& dirName);
 	static bool fileExists(const std::string& fileName);
+	static bool fileExists(const std::string& dirName, const std::string& fileName);
 
 	// returns true if operatoin was successful
 
