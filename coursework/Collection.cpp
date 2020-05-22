@@ -17,35 +17,30 @@ void Collection::add(const Object* const object)
 
 Collection::Collection(std::string path, std::string name) : path(path), name(name)
 {
-	//if (!FileReadWrite::dirExists(path))
-	//	throw "Directory doesnt exist :(";
-	//
-	//if (!FileReadWrite::dirExists(dir()))
-	//{
-	//	FileReadWrite::makeDir(path, name);
-	//	FileReadWrite::write(dir(), _indexFileName, {});
-	//	_index = std::vector<int>(0);
-	//}
-	//else {
-	//	if (!FileReadWrite::fileExists(dir(), _indexFileName))
-	//	{
-	//		FileReadWrite::write(dir(), _indexFileName, {});
-	//		_index = std::vector<int>(0);
-	//	}
-	//	else
-	//	{
-	//		std::vector<int> data;
-	//		//FileReadWrite::readInts(dir(), _indexFileName, data);
-	//		
-	//
-	//	}
-	//}
+	if (!FileReadWrite::dirExists(path))
+		throw "Directory doesnt exist :(";
+	
+	if (!FileReadWrite::dirExists(dir()))
+	{
+		FileReadWrite::makeDir(path, name);
+		_index = {};
+		writeIndex();
+	}
+	else {
+		if (!FileReadWrite::fileExists(dir(), _indexFileName))
+		{
+			_index = {};
+			writeIndex();
+		}
+		else
+			readIndex();
+	}
 }
 Collection::~Collection() {}
 
 bool Collection::writeIndex()
 {
-	std::string file = path + _indexFileName;
+	std::string file = dir() + _indexFileName;
 	std::ofstream indexSizeOutput(file + ".size");
 	if (!indexSizeOutput.is_open())
 		return false;
@@ -59,9 +54,12 @@ bool Collection::writeIndex()
 	if (!indexOutput.is_open())
 		return false;
 
-	for (auto i = 0; i < _index.size() - 1; ++i)
-		indexOutput << _index[i] << '\n';
-	indexOutput << _index[_index.size() - 1];
+	if (_index.size() != 0)
+	{
+		for (int i = 0; i < _index.size() - 1; ++i)
+			indexOutput << _index[i] << '\n';
+		indexOutput << _index[_index.size() - 1];
+	}
 
 	indexOutput.close();
 	return true;
@@ -69,23 +67,29 @@ bool Collection::writeIndex()
 
 bool Collection::readIndex()
 {
-	std::string file = path + _indexFileName;
+	std::string file = dir() + _indexFileName;
 	std::ifstream inputIndexSize(file + ".size");
 	if (!inputIndexSize.is_open())
 		return false;
 
-	int indexSize = 0;
+	int indexSize = -1;
 	inputIndexSize >> indexSize;
 	_index.resize(indexSize);
 
 	inputIndexSize.close();
 
 
+	if (indexSize == -1) // couldnt read file
+		return false;
+	if (indexSize == 0) // index is empty -> no need to open it
+		return true;
+
+
 	std::ifstream inputIndex(file);
 	if (!inputIndex.is_open())
 		return false;
 
-	for (auto i = 0; i < _index.size(); ++i)
+	for (int i = 0; i < _index.size(); ++i)
 		inputIndex >> _index[i];
 
 	inputIndex.close();
