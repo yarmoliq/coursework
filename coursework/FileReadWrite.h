@@ -4,6 +4,7 @@
 #define _READWRITEFILE_H_
 
 #include <string>
+#include <vector>
 #include <windows.h> // DWORD, attributes
 #include <stdio.h> // remove()
 
@@ -11,22 +12,22 @@
 
 class FileReadWrite final
 {
+	// returns true if operatoin was successful
 public:
 	static bool dirExists(const std::string& dirName);
 	static bool fileExists(const std::string& fileName);
 	static bool fileExists(const std::string& dirName, const std::string& fileName);
 
-	// returns true if operatoin was successful
-
 	// dir format: "./folderName/"
-	static bool write(std::string dir, std::string fileName, const Arguments& args);
-	static bool read(std::string dir, std::string fileName, Arguments* const args);
-	static bool write(std::string fileName, const Arguments& args);
-	static bool read(std::string fileName, Arguments* const args);
+	static bool write(const std::string& dir, const std::string &fileName, const Arguments& args);
+	static bool read(const std::string& dir, const std::string& fileName, Arguments* const args);
+	static bool write(const std::string& fileName, const Arguments& args);
+	static bool read(const std::string& fileName, Arguments* const args);
 
-	// returns true if operatoin was successful
+
 	static bool deleteFile(const std::string& fileName);
-private:
+
+	static void makeDir(const std::string& dir, const std::string newDirName);
 };
 
 

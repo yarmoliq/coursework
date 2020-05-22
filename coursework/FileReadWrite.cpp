@@ -1,7 +1,7 @@
 #include "FileReadWrite.h"
 
 #include <fstream>
-#include <vector>
+#include <direct.h> // _mkdir()
 
 bool FileReadWrite::dirExists(const std::string& dirName)
 {
@@ -34,17 +34,17 @@ bool FileReadWrite::fileExists(const std::string& dirName, const std::string& fi
 	return fileExists(dirName+fileName);
 }
 
-bool FileReadWrite::write(std::string dir, std::string fileName, const Arguments& args)
+bool FileReadWrite::write(const std::string& dir, const std::string& fileName, const Arguments& args)
 {
 	return write(dir + fileName, args);
 }
 
-bool FileReadWrite::read(std::string dir, std::string fileName, Arguments* const args)
+bool FileReadWrite::read(const std::string& dir, const std::string& fileName, Arguments* const args)
 {
 	return read(dir+fileName, args);
 }
 
-bool FileReadWrite::write(std::string fileName, const Arguments& args)
+bool FileReadWrite::write(const std::string& fileName, const Arguments& args)
 {
 	std::ofstream output(fileName);
 
@@ -60,7 +60,7 @@ bool FileReadWrite::write(std::string fileName, const Arguments& args)
 	return true;
 }
 
-bool FileReadWrite::read(std::string fileName, Arguments* const args)
+bool FileReadWrite::read(const std::string& fileName, Arguments* const args)
 {
 	std::ifstream input(fileName);
 
@@ -91,4 +91,10 @@ bool FileReadWrite::deleteFile(const std::string& fileName)
 		return true;
 
 	return false;
+}
+
+void FileReadWrite::makeDir(const std::string& dir, const std::string newDirName)
+{
+	std::string newDir = dir + newDirName;
+	_mkdir(newDir.c_str());
 }

@@ -4,6 +4,7 @@
 #define _COLLECTION_H_
 
 #include <vector>
+#include <fstream>
 #include <string>
 #include <direct.h> // _mkdir() 
 #include <type_traits>
@@ -13,21 +14,21 @@
 #include "Object.h"
 #include "Arguments.h"
 
-class Collection
+class Collection // final
 {
 public:
-	void add(const Object * const object);
+	void add(const Object * const object); // [todo][not sure] make not void for detecting errors
 	// [add] adding a list of objects
 	
 	template<class ObjectDerived,
 		class = std::enable_if_t<std::is_base_of_v<Object, ObjectDerived>>
 	>
-	ObjectDerived* getByID(const std::string ID)
+	ObjectDerived* getByID(const int ID)
 	{
 		if (!FileReadWrite::dirExists(dir()))
 			return NULL;
 
-		std::string fileName = ID + ".txt";
+		std::string fileName = std::to_string(ID);// +".txt";
 
 		if (!FileReadWrite::fileExists(dir(), fileName))
 			return NULL;
@@ -49,30 +50,33 @@ public:
 
 	// [add] filter(arguments)
 
-	bool change(const std::string ID, const Object* const newObject);
+	bool change(const int ID, const Object* const newObject);
 	bool change(const Object* const objectToChange, const Object* const newObject);
 
 	bool del(const std::string ID);
 	bool del(const Object* const object);
 
-	Collection();
-	virtual ~Collection();
+	Collection(std::string path, std::string name);
+	virtual ~Collection(); // [todo] remove "virtual" if class is final
 
 //protected:
 
-	//Arguments convert(const Object* const object) = 0;
-	//Object* convert(const Arguments& args) = 0;
+	std::vector<int> _index; // stores all IDs
+	const std::string _indexFileName = "__INDEX__";
 
-
-
-	std::string name; // must be unique, obviously
-	std::string path; // e.g. "./DataBase/"
-	std::string dir() const; // "[path][name]/"
+	const std::string name; // must be unique, obviously
+	const std::string path; // e.g. "./DataBase/"
+	std::string dir() const; // "[path][name]/" // directory for stroring the collection's files
 
 	// static vector<std::string> collectionNames
 
-	//bool dirExists();
+	// array of freed IDs ( if someone deletes their account we can reuse their ID )
 
+	// returns true if operation successful
+	bool writeIndex();
+	bool readIndex();
+
+	//bool dirExists();
 	//friend class DataBase
 };
 

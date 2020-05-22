@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include "Collection.h"
 #include "User.h" 
@@ -6,32 +7,29 @@
 
 int main()
 {
-	Collection userCollection;
-
-	userCollection.path = "./TESTS/DB/";
-	userCollection.name = "Users";
+	Collection userCollection("./TESTS/DB/", "Users");
 
 	//User user(Arguments(
 	//	{
-	//		"91430066",
+	//		"123654894",
 	//		"2",
-	//		"PADLA S POHOJIM ID",
-	//		"moi password",
-	//		"Sobaka Licaya"
+	//		"ODMEN",
+	//		"qwerty12345",
+	//		"Sample Text"
 	//	}
 	//));
-
+	//
 	//userCollection.add(&user);
 
-	auto user = userCollection.getByID<User>("91430066");
-
-	if (user)
-	{
-		std::cout << "Welcome back, " + user->getName() + "!\n";
-	}
-	else std::cout << "Create a free account!\n";
-
-	delete user;
+	//auto user = userCollection.getByID<User>(91430066);
+	//
+	//if (user)
+	//{
+	//	std::cout << "Welcome back, " + user->getName() + "!\n";
+	//}
+	//else std::cout << "Create a free account!\n";
+	//
+	//delete user;
 
 	return 0;
 }
