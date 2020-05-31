@@ -39,6 +39,25 @@ public:
 		return obj;
 	}
 
+	template<class ObjectDerived,
+		class = std::enable_if_t<std::is_base_of_v<Object, ObjectDerived>>
+	>
+	ObjectDerived* getByUniqueArg(const std::string& arg, size_t argIndx)
+	{
+		for (const auto& id : _index)
+		{
+			Arguments args;
+			bool rs = read(id, args);
+			if (!rs)
+				return NULL;
+
+			if (arg == args[argIndx])
+				return new ObjectDerived(args);
+		}
+
+		return NULL;
+	}
+
 	// [add] filter(arguments)
 
 	bool change(const Object* const newObject);
