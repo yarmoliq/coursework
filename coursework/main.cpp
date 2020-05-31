@@ -18,16 +18,10 @@ int main()
 			"PADLA S TAKIM JE LOGINOM"
 		}
 	));
-
+	
 	userCollection.add(&user);
 
-	//auto user = userCollection.getByID<User>(91430066);
-	//
-	//if (user)
-	//{
-	//	std::cout << "Welcome back, " + user->getName() + "!\n";
-	//}
-	//else std::cout << "Create a free account!\n";
+	//User* user = userCollection.getByID<User>(11365);
 	//
 	//delete user;
 

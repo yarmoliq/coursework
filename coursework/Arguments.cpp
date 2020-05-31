@@ -27,7 +27,7 @@ Arguments::Arguments(const Arguments& other)
 		_arguments[i] = other._arguments[i];
 }
 
-std::string Arguments::operator[](const int i) const
+std::string& Arguments::operator[](const int i) const
 {
 	if (_argsNumber == 0)
 		throw "no elements";

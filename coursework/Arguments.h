@@ -15,7 +15,7 @@ public:
 	Arguments(const int n, const std::string *const args);
 	Arguments(const std::vector<std::string> &args);
 	Arguments(const Arguments &other);
-	std::string operator[](const int i) const;
+	std::string& operator[](const int i) const;
 	Arguments();
 	~Arguments();
 

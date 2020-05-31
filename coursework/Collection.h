@@ -25,7 +25,7 @@ public:
 	ObjectDerived* getByID(const int ID)
 	{
 		Arguments args;
-		bool successfulRead = read(ID, &args);
+		bool successfulRead = read(ID, args);
 
 		ObjectDerived* obj = NULL;
 		if (successfulRead)
