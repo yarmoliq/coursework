@@ -93,6 +93,11 @@ bool FileReadWrite::deleteFile(const std::string& fileName)
 	return false;
 }
 
+bool FileReadWrite::deleteFile(const std::string& dir, const std::string& fileName)
+{
+	return deleteFile(dir + fileName);
+}
+
 void FileReadWrite::makeDir(const std::string& dir, const std::string newDirName)
 {
 	std::string newDir = dir + newDirName;

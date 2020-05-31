@@ -49,7 +49,9 @@ public:
 	~Collection();
 
 //protected:
+	// reads object data from a corresponding file
 	bool read(const unsigned int ID, Arguments& args);
+	// writes object data to a corresponding file
 	bool write(const Arguments& args);
 
 	unsigned int generateID() const;
@@ -67,6 +69,7 @@ public:
 	
 	// returns true if operation successful
 	bool addToIndex(unsigned int ID);
+	bool deleteFromIndex(unsigned int ID);
 
 	bool writeIndex();
 	bool readIndex();

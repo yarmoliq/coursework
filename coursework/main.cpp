@@ -9,16 +9,16 @@ int main()
 {
 	Collection userCollection("./TESTS/DB/", "Users");
 
-	//User user(Arguments(
-	//	{
-	//		"0",
-	//		"0",
-	//		"sobaka",
-	//		"pass",
-	//		"Antonio Papos"
-	//	}
-	//));
-	//
+	User user(Arguments(
+		{
+			"15694",
+			"0",
+			"den4ik",
+			"12345679",
+			"Den SH."
+		}
+	));
+	
 	//userCollection.add(&user);
 
 	//User* user = userCollection.getByID<User>(22886);

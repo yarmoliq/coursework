@@ -47,6 +47,21 @@ bool Collection::change(const Object* const newObject)
 	return true;
 }
 
+bool Collection::del(const unsigned int ID)
+{
+	if (!objectExists(ID))
+		return false;
+
+	std::string fileName = std::to_string(ID);
+
+	bool ds = FileReadWrite::deleteFile(dir(), fileName);
+
+	if (!ds)
+		return false;
+
+	return deleteFromIndex(ID);
+}
+
 Collection::Collection(std::string path, std::string name) : path(path), name(name)
 {
 	if (!FileReadWrite::dirExists(path))
@@ -158,6 +173,17 @@ bool Collection::addToIndex(unsigned int ID)
 
 	_index.push_back(ID);
 	return writeIndex();	
+}
+
+bool Collection::deleteFromIndex(unsigned int ID)
+{
+	for (size_t i = 0; i < _index.size(); i++)
+		if (_index[i] == ID)
+		{
+			_index.erase(_index.begin() + i);
+			return writeIndex();
+		}
+	return false;
 }
 
 bool Collection::writeIndex()

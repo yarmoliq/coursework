@@ -26,6 +26,7 @@ public:
 
 
 	static bool deleteFile(const std::string& fileName);
+	static bool deleteFile(const std::string& dir, const std::string& fileName);
 
 	static void makeDir(const std::string& dir, const std::string newDirName);
 };
