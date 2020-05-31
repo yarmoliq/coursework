@@ -19,17 +19,33 @@ bool Collection::add(const Object* const object)
 	auto id = generateID();
 	std::string fileName = args[0] = std::to_string(id);
 	 
-	bool ws = FileReadWrite::write(dir(), fileName, args);
+	bool ws = write(args);
 
 	if (!ws)
 		return false;
 
-	_index.push_back(id);
-	writeIndex();
+	return addToIndex(id);
+}
+
+
+bool Collection::change(const Object* const newObject)
+{
+	auto ID = newObject->getID();
+
+	if (!objectExists(ID))
+		return false;
+
+	auto newArgs = newObject->arguments();
+	Arguments oldArgs;
+	bool rs = read(ID, oldArgs);
+
+	if (!rs)
+		return false;
+
+	bool ws = write(newArgs);
 
 	return true;
 }
-
 
 Collection::Collection(std::string path, std::string name) : path(path), name(name)
 {
@@ -54,7 +70,7 @@ Collection::Collection(std::string path, std::string name) : path(path), name(na
 }
 Collection::~Collection() {}
 
-bool Collection::read(unsigned int id, Arguments& args)
+bool Collection::read(const unsigned int id, Arguments& args)
 {
 	if (!FileReadWrite::dirExists(dir()))
 		return NULL;
@@ -65,6 +81,13 @@ bool Collection::read(unsigned int id, Arguments& args)
 		return NULL;
 
 	return FileReadWrite::read(dir(), fileName, &args);
+}
+
+bool Collection::write(const Arguments& args)
+{
+	std::string fileName = args[0]; // ID
+
+	return FileReadWrite::write(dir(), fileName, args);
 }
 
 unsigned int Collection::generateID() const
@@ -95,9 +118,9 @@ unsigned int Collection::generateID() const
 	return id;
 }
 
-bool Collection::objectExists(unsigned int ID)
+bool Collection::objectExists(const unsigned int ID)
 {
-	for (auto id : _index)
+	for (const auto& id : _index)
 		if (id == ID)
 			return true;
 	return false;
@@ -126,6 +149,15 @@ bool Collection::checkUniqueArgs(const std::string& uArgs, const Arguments& newA
 	}
 
 	return true;
+}
+
+bool Collection::addToIndex(unsigned int ID)
+{
+	if (objectExists(ID))
+		return false;
+
+	_index.push_back(ID);
+	return writeIndex();	
 }
 
 bool Collection::writeIndex()

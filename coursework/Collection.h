@@ -22,7 +22,7 @@ public:
 	template<class ObjectDerived,
 		class = std::enable_if_t<std::is_base_of_v<Object, ObjectDerived>>
 	>
-	ObjectDerived* getByID(const int ID)
+	ObjectDerived* getByID(const unsigned int ID)
 	{
 		Arguments args;
 		bool successfulRead = read(ID, args);
@@ -39,20 +39,18 @@ public:
 		return obj;
 	}
 
-
 	// [add] filter(arguments)
 
-	bool change(const int ID, const Object* const newObject);
-	bool change(const Object* const objectToChange, const Object* const newObject);
+	bool change(const Object* const newObject);
 
-	bool del(const std::string ID);
-	bool del(const Object* const object);
+	bool del(const unsigned int ID);
 
 	Collection(std::string path, std::string name);
 	~Collection();
 
 //protected:
-	bool read(unsigned int id, Arguments& args);
+	bool read(const unsigned int ID, Arguments& args);
+	bool write(const Arguments& args);
 
 	unsigned int generateID() const;
 
@@ -63,10 +61,13 @@ public:
 	const std::string path; // e.g. "./DataBase/"
 	std::string dir() const; // "[path][name]/" // directory for stroring the collection's files
 
-	bool objectExists(unsigned int ID);
+	bool objectExists(const unsigned int ID);
 	bool checkUniqueArgs(const std::string& uArgs, const Arguments& newArgs);
 
+	
 	// returns true if operation successful
+	bool addToIndex(unsigned int ID);
+
 	bool writeIndex();
 	bool readIndex();
 

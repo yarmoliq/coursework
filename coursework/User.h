@@ -30,7 +30,7 @@ public:
 	std::string getName() const;
 
 	std::string uniqueArguments() const override;
-protected:
+//protected:
 
 	AccessLevel _accessLevel;
 

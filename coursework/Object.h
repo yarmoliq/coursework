@@ -14,15 +14,17 @@ public:
 
 	unsigned int getID() const;
 
-	// 1 for each argument after 1st(ID) if needed unique, otherwise 0
-	// e.g. i want users to have unique logins -> make this string = "1000"
-	// because login is the first argument after ID. other arguments dont 
-	// need to be unique -> 0s
+	// uniqueArguments indicates whether we need to to
+	// have some object properties unique
+	// format: "011010"
+	// 0 if we dont need a property to be unique, 1 - need
+	// first symbol is responsible for the second property
+	// because the first property is ID
 	virtual std::string uniqueArguments() const;
 
 	bool operator==(const Object& other);
 
-protected:
+//protected:
 	
 	// converts an object into Arguments
 	virtual Arguments arguments() const = 0;

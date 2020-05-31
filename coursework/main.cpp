@@ -9,19 +9,24 @@ int main()
 {
 	Collection userCollection("./TESTS/DB/", "Users");
 
-	User user(Arguments(
-		{
-			"0",
-			"1",
-			"sheepang2",
-			"good_password",
-			"PADLA S TAKIM JE LOGINOM"
-		}
-	));
-	
-	userCollection.add(&user);
+	//User user(Arguments(
+	//	{
+	//		"0",
+	//		"0",
+	//		"sobaka",
+	//		"pass",
+	//		"Antonio Papos"
+	//	}
+	//));
+	//
+	//userCollection.add(&user);
 
-	//User* user = userCollection.getByID<User>(11365);
+	//User* user = userCollection.getByID<User>(22886);
+	//
+	//user->_name = "MY NEW NAME";
+	//user->_id = 888;
+	//
+	//userCollection.change(user);
 	//
 	//delete user;
 
