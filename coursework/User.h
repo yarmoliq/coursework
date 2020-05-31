@@ -9,7 +9,7 @@
 #include "Object.h"
 #include "Arguments.h"
 
-class User : public Object
+class User : public Object // make final
 {
 public:
 
@@ -28,7 +28,8 @@ public:
 	std::string getPassword() const; // mb change to "matches password"
 
 	std::string getName() const;
-	
+
+	std::string uniqueArguments() const override;
 protected:
 
 	AccessLevel _accessLevel;
@@ -37,7 +38,6 @@ protected:
 	std::string _password;
 
 	std::string _name;
-
 
 
 	//friend class UserManager;

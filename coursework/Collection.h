@@ -14,27 +14,18 @@
 #include "Object.h"
 #include "Arguments.h"
 
-class Collection // final
+class Collection final
 {
 public:
-	void add(const Object * const object); // [todo][not sure] make not void for detecting errors
-	// [add] adding a list of objects
+	bool add(const Object * const object);
 	
 	template<class ObjectDerived,
 		class = std::enable_if_t<std::is_base_of_v<Object, ObjectDerived>>
 	>
 	ObjectDerived* getByID(const int ID)
 	{
-		if (!FileReadWrite::dirExists(dir()))
-			return NULL;
-
-		std::string fileName = std::to_string(ID);// +".txt";
-
-		if (!FileReadWrite::fileExists(dir(), fileName))
-			return NULL;
-
 		Arguments args;
-		bool successfulRead = FileReadWrite::read(dir(), fileName, &args);
+		bool successfulRead = read(ID, &args);
 
 		ObjectDerived* obj = NULL;
 		if (successfulRead)
@@ -48,6 +39,7 @@ public:
 		return obj;
 	}
 
+
 	// [add] filter(arguments)
 
 	bool change(const int ID, const Object* const newObject);
@@ -57,26 +49,27 @@ public:
 	bool del(const Object* const object);
 
 	Collection(std::string path, std::string name);
-	virtual ~Collection(); // [todo] remove "virtual" if class is final
+	~Collection();
 
 //protected:
+	bool read(unsigned int id, Arguments& args);
 
-	std::vector<int> _index; // stores all IDs
+	unsigned int generateID() const;
+
+	std::vector<unsigned int> _index; // stores all IDs
 	const std::string _indexFileName = "__INDEX__";
 
 	const std::string name; // must be unique, obviously
 	const std::string path; // e.g. "./DataBase/"
 	std::string dir() const; // "[path][name]/" // directory for stroring the collection's files
 
-	// static vector<std::string> collectionNames
-
-	// array of freed IDs ( if someone deletes their account we can reuse their ID )
+	bool objectExists(unsigned int ID);
+	bool checkUniqueArgs(const std::string& uArgs, const Arguments& newArgs);
 
 	// returns true if operation successful
 	bool writeIndex();
 	bool readIndex();
 
-	//bool dirExists();
 	//friend class DataBase
 };
 

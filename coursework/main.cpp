@@ -9,17 +9,17 @@ int main()
 {
 	Collection userCollection("./TESTS/DB/", "Users");
 
-	//User user(Arguments(
-	//	{
-	//		"123654894",
-	//		"2",
-	//		"ODMEN",
-	//		"qwerty12345",
-	//		"Sample Text"
-	//	}
-	//));
-	//
-	//userCollection.add(&user);
+	User user(Arguments(
+		{
+			"0",
+			"1",
+			"sheepang2",
+			"good_password",
+			"PADLA S TAKIM JE LOGINOM"
+		}
+	));
+
+	userCollection.add(&user);
 
 	//auto user = userCollection.getByID<User>(91430066);
 	//
