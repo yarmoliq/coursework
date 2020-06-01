@@ -10,9 +10,10 @@
 #include <type_traits>
 
 #include "FileReadWrite.h"
-#include "Collection.h"
 #include "Object.h"
 #include "Arguments.h"
+
+class DataBase;
 
 class Collection final
 {
@@ -67,7 +68,7 @@ public:
 	Collection(std::string path, std::string name);
 	~Collection();
 
-//protected:
+protected:
 	// reads object data from a corresponding file
 	bool read(const unsigned int ID, Arguments& args);
 	// writes object data to a corresponding file
@@ -93,7 +94,7 @@ public:
 	bool writeIndex();
 	bool readIndex();
 
-	//friend class DataBase
+	friend class DataBase;
 };
 
 

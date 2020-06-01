@@ -9,13 +9,18 @@
 
 #include "Collection.h"
 
-class DataBase // final
+/// ALL CLASSES USED WITH COLLECTIONS
+#include "Object.h"
+#include "User.h"
+//#include "FootballPlayer.h"
+
+class DataBase
 {
-	// vector<Collection>
-
-	// storing collections info
+	static const std::string dataBasePath;
+	static std::vector<Collection> _collections;
+public:
+	static Collection* getCollection(std::string collectionName);
 };
-
 
 
 #endif // !_DATABASE_H_

@@ -1,34 +1,29 @@
 #include <iostream>
 #include <vector>
 
-#include "Collection.h"
-#include "User.h" 
+//#include "Collection.h"
+//#include "User.h" 
 //#include "myInput.h"
+
+#include "DataBase.h"
 
 int main()
 {
-	Collection userCollection("./TESTS/DB/", "Users");
+	User user(Arguments(
+		{
+			"888",
+			"0",
+			"den4ik",
+			"12345679",
+			"Den SH."
+		}
+	));
 
-	//User user(Arguments(
-	//	{
-	//		"15694",
-	//		"0",
-	//		"den4ik",
-	//		"12345679",
-	//		"Den SH."
-	//	}
-	//));
-	
-	//userCollection.add(&user);
+	DataBase::getCollection("Users")->add(&user);
 
-	User* user = userCollection.getByUniqueArg<User>("login", 2);
+	//User* user = userCollection.getByUniqueArg<User>("login", 2);
 	
-	//user->_name = "MY NEW NAME";
-	//user->_id = 888;
-	
-	//userCollection.change(user);
-	
-	delete user;
+	//delete user;
 
 	return 0;
 }
