@@ -59,6 +59,42 @@ public:
 		return NULL;
 	}
 
+	template<class ObjectDerived,
+		class = std::enable_if_t<std::is_base_of_v<Object, ObjectDerived>>
+	>
+	ObjectDerived* getNext(unsigned int requestedID = UINT_MAX)
+	// if requestedID == UINT_MAX the function will return
+	// the next element after the last returned element -> lastID + 1
+	// if requestedID != UINT_MAX the function will return
+	// the next element after requestedID -> requestedID + 1
+	{
+		if (_index.size() == 0)
+			return NULL;
+
+		static unsigned int lastID = _index[_index.size()-1];
+
+		if (requestedID != UINT_MAX)
+			lastID = requestedID;
+
+		//auto newID = lastID = getNextID(lastID);
+		auto x = getNextID(lastID);
+
+		unsigned int newID;
+
+		if (x != UINT_MAX)
+			newID = lastID = x;
+		else // ID was not found
+			return NULL;
+
+		
+		Arguments args;
+		bool rs = read(newID, args);
+		if (!rs)
+			return NULL;
+
+		return new ObjectDerived(args);
+	}
+
 	// [add] filter(arguments)
 
 	bool change(const Object* const newObject);
@@ -75,6 +111,7 @@ protected:
 	bool write(const Arguments& args);
 
 	unsigned int generateID() const;
+	unsigned int getNextID(unsigned int currentID) const;
 
 	std::vector<unsigned int> _index; // stores all IDs
 	const std::string _indexFileName = "__INDEX__";

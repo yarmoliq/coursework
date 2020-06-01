@@ -133,6 +133,18 @@ unsigned int Collection::generateID() const
 	return id;
 }
 
+unsigned int Collection::getNextID(unsigned int currentID) const
+{
+	if (currentID == _index[_index.size() - 1])
+		return _index[0];
+
+	for (size_t i = 0; i < _index.size()-1; i++)
+		if (currentID == _index[i])
+			return _index[i + 1];
+
+	return UINT_MAX;
+}
+
 bool Collection::objectExists(const unsigned int ID)
 {
 	for (const auto& id : _index)

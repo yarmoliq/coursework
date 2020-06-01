@@ -9,21 +9,25 @@
 
 int main()
 {
-	User user(Arguments(
-		{
-			"888",
-			"0",
-			"den4ik",
-			"12345679",
-			"Den SH."
-		}
-	));
+	//User user(Arguments(
+	//	{
+	//		"888",
+	//		"0",
+	//		"nuts",
+	//		"12345679",
+	//		"Den SH."
+	//	}
+	//));
+	//
+	//DataBase::getCollection("Users")->add(&user);
 
-	DataBase::getCollection("Users")->add(&user);
-
-	//User* user = userCollection.getByUniqueArg<User>("login", 2);
+	User* user = DataBase::getCollection("Users")->getNext<User>(18661);
+	 user = DataBase::getCollection("Users")->getNext<User>();
+	 user = DataBase::getCollection("Users")->getNext<User>();
+	 user = DataBase::getCollection("Users")->getNext<User>();
+	 user = DataBase::getCollection("Users")->getNext<User>();
 	
-	//delete user;
+	delete user;
 
 	return 0;
 }
