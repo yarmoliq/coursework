@@ -9,11 +9,13 @@
 #include "Object.h"
 #include "Arguments.h"
 
+class Collection;
+
 class User : public Object // make final
 {
 public:
 
-	enum class AccessLevel { REGISTERED_USER, MODERATOR, ADMIN };	
+	enum class AccessLevel { GUEST, REGISTERED_USER, MODERATOR, ADMIN };	
 
 	User(const Arguments& args);
 	virtual ~User();
@@ -30,7 +32,7 @@ public:
 	std::string getName() const;
 
 	std::string uniqueArguments() const override;
-//protected:
+protected:
 
 	AccessLevel _accessLevel;
 
@@ -40,7 +42,7 @@ public:
 	std::string _name;
 
 
-	//friend class UserManager;
+	friend class Collection;
 	// probably DB. not usermanager
 };
 
