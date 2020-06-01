@@ -27,6 +27,33 @@ bool Collection::add(const Object* const object)
 	return addToIndex(id);
 }
 
+// 
+bool Collection::getNextArguments(Arguments& args, bool reset)
+{
+	if (_index.size() == 0)
+		return false;
+
+	static unsigned int currentID = _index[0];
+
+	if (reset)
+		currentID = _index[0];
+
+	bool rs = read(currentID, args);
+	if (!rs)
+		return false; // stoilo sdelat int i davat kodi oshibki, no y menya net vremeni
+
+	// arguments are changed
+
+	auto newID = getNextID(currentID);
+	if (newID == UINT_MAX)
+	{
+		currentID = _index[0];
+		return false;
+	}
+
+	currentID = newID; // for the next iteration
+	return true;
+}
 
 bool Collection::change(const Object* const newObject)
 {
@@ -135,9 +162,6 @@ unsigned int Collection::generateID() const
 
 unsigned int Collection::getNextID(unsigned int currentID) const
 {
-	if (currentID == _index[_index.size() - 1])
-		return _index[0];
-
 	for (size_t i = 0; i < _index.size()-1; i++)
 		if (currentID == _index[i])
 			return _index[i + 1];

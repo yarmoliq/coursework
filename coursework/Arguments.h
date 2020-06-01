@@ -22,6 +22,10 @@ public:
 	int size() const;
 
 	Arguments& operator=(const Arguments& other);
+	bool operator==(const Arguments& other);
+	bool operator!=(const Arguments& other);
+
+
 
 private:
 

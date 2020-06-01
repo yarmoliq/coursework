@@ -20,12 +20,13 @@ int main()
 	//));
 	//
 	//DataBase::getCollection("Users")->add(&user);
-
-	User* user = DataBase::getCollection("Users")->getNext<User>(18661);
-	 user = DataBase::getCollection("Users")->getNext<User>();
-	 user = DataBase::getCollection("Users")->getNext<User>();
-	 user = DataBase::getCollection("Users")->getNext<User>();
-	 user = DataBase::getCollection("Users")->getNext<User>();
+	Arguments filter({ "", "", "", "", "Den SH." });
+	int res;
+	User* user = DataBase::getCollection("Users")->getNext<User>(res,filter);
+	 user = DataBase::getCollection("Users")->getNext<User>(res);
+	 user = DataBase::getCollection("Users")->getNext<User>(res);
+	 user = DataBase::getCollection("Users")->getNext<User>(res);
+	 user = DataBase::getCollection("Users")->getNext<User>(res);
 	
 	delete user;
 

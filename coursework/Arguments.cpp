@@ -66,3 +66,17 @@ Arguments& Arguments::operator=(const Arguments& other)
 	}
 	return *this;
 }
+
+bool Arguments::operator==(const Arguments& other)
+{
+	for (size_t i = 0; i < _argsNumber; i++)
+		if (_arguments[i] != other._arguments[i])
+			return false;
+
+	return true;
+}
+
+bool Arguments::operator!=(const Arguments& other)
+{
+	return !(operator==(other));
+}

@@ -62,38 +62,78 @@ public:
 	template<class ObjectDerived,
 		class = std::enable_if_t<std::is_base_of_v<Object, ObjectDerived>>
 	>
-	ObjectDerived* getNext(unsigned int requestedID = UINT_MAX)
-	// if requestedID == UINT_MAX the function will return
-	// the next element after the last returned element -> lastID + 1
-	// if requestedID != UINT_MAX the function will return
-	// the next element after requestedID -> requestedID + 1
+		ObjectDerived* getNext(int& success, Arguments newFilter = Arguments({ "" }))
 	{
-		if (_index.size() == 0)
+		static Arguments filter = Arguments({ "" });
+		static bool reset = false; // resets getNextArguments()
+		success = 1;
+		//if (newFileter != {})
+		//{
+		//	filter = newFileter;
+		//	Arguments fake;
+		//	getNextArguments(fake, _index[_index.size() - 2]); // resets getNextID to first ID
+		//}
+		//
+		//bool firstChecked = false;
+		//while (true)
+		//{
+		//	Arguments args;
+		//	bool rs = getNextArguments(args);
+		//	if (!rs)
+		//		continue;
+		//	if (args[0] == std::to_string(_index[_index.size() - 2]) and firstChecked)
+		//	{
+		//		
+		//	}
+		//}
+
+		if ((newFilter != Arguments({ "" })) and (newFilter != filter))
+		{
+			filter = newFilter;
+			reset = true;
+		}
+
+		if (filter == Arguments({ "" }))
 			return NULL;
 
-		static unsigned int lastID = _index[_index.size()-1];
+		while (true)
+		{
+			Arguments getArgs;
+			bool rs;
+			if (reset)
+			{
+				rs = getNextArguments(getArgs, true);
+				reset = false;
+			}
+			else
+				rs = getNextArguments(getArgs);
 
-		if (requestedID != UINT_MAX)
-			lastID = requestedID;
+			if (!rs)
+			{
+				success = 2;
+				//break;
+			}
 
-		//auto newID = lastID = getNextID(lastID);
-		auto x = getNextID(lastID);
+			bool found = true;
 
-		unsigned int newID;
+			for (size_t i = 0; i < getArgs.size(); i++)
+				if (filter[i] != "") // if it is important arguments
+					if (getArgs[i] == filter[i]) // if important argument matches
+					{
+					}
+					else
+						found = false;
 
-		if (x != UINT_MAX)
-			newID = lastID = x;
-		else // ID was not found
-			return NULL;
+			if(found)
+				return new ObjectDerived(getArgs);
 
-		
-		Arguments args;
-		bool rs = read(newID, args);
-		if (!rs)
-			return NULL;
+			if (success == 2)
+				return NULL;
+		}
 
-		return new ObjectDerived(args);
+		return NULL;
 	}
+
 
 	// [add] filter(arguments)
 
@@ -105,6 +145,12 @@ public:
 	~Collection();
 
 protected:
+	// if requestedID == UINT_MAX the function will return
+	// the next element after the last returned element -> lastID + 1
+	// if requestedID != UINT_MAX the function will return
+	// the next element after requestedID -> requestedID + 1
+	bool getNextArguments(Arguments& args, bool reset = false);
+
 	// reads object data from a corresponding file
 	bool read(const unsigned int ID, Arguments& args);
 	// writes object data to a corresponding file
