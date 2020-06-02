@@ -54,6 +54,9 @@
     <ClCompile Include="Register.cpp">
       <Filter>Spaces</Filter>
     </ClCompile>
+    <ClCompile Include="Printer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myInput.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="Register.h">
       <Filter>Spaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Printer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,6 +26,7 @@
     <ClCompile Include="LoginSpace.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Printer.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Session.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="FileReadWrite.h" />
     <ClInclude Include="LoginSpace.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Printer.h" />
     <ClInclude Include="myInput.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Register.h" />
