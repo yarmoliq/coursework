@@ -1,5 +1,7 @@
 #include "Printer.h"
 
+#include <conio.h>
+
 std::vector<std::string> Printer::convert(const Object* const obj)
 {
 	auto args = obj->arguments();
@@ -95,4 +97,32 @@ void Printer::printObject(const std::vector<std::string>& object,
 {
 	auto alignments = std::vector<Alignment>(object.size(), alignment);
 	printObject(object, separator, buffers, alignments);
+}
+
+unsigned int Printer::menu(const std::vector<std::string> menuItems)
+{
+	unsigned int size = menuItems.size();
+
+	for (size_t i = 0; i < size; i++)
+	{
+		std::string toPrint = std::to_string(i + 1) + " - " + menuItems[i];
+		Printer::printLine(toPrint);
+	}
+	printf(" >> ");
+
+	char choice = size;
+
+	while (true)
+	{
+		choice = _getch();
+
+		if (choice >= '1' and choice <= '9')
+		{
+			std::string s = std::string(1, choice);
+			Printer::printLine(s);
+			return (int)choice - '1';
+		}
+	}
+
+	return 0;
 }

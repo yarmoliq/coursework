@@ -24,6 +24,7 @@
     <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="FileReadWrite.cpp" />
     <ClCompile Include="LoginSpace.cpp" />
+    <ClCompile Include="Logout.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Printer.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arguments.h" />
@@ -39,6 +41,7 @@
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="FileReadWrite.h" />
     <ClInclude Include="LoginSpace.h" />
+    <ClInclude Include="Logout.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Printer.h" />
     <ClInclude Include="myInput.h" />
@@ -47,6 +50,7 @@
     <ClInclude Include="Session.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

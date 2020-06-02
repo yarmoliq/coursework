@@ -32,5 +32,7 @@ namespace Printer
 		std::vector<unsigned int> buffers = std::vector<unsigned int>(0),
 		Alignment alignment = CENTER);
 
+	unsigned int menu(const std::vector<std::string> menuItems);
+
 	//void printList(const std::vector<std::string>& list, const std::vector<unsigned int>& )
 }

@@ -4,43 +4,77 @@
 #include <conio.h>
 
 #include "LoginSpace.h"
+#include "Logout.h"
 #include "Register.h"
+#include "Printer.h"
+
+Space* _login() { return new LoginSpace; }
+Space* _logout() { return new Logout; }
+Space* _register() { return new Register; }
+
+std::vector<Space* (*)()> spaces; 
+std::vector<std::string> labels;
 
 void MainMenu::MAIN()
 {
-	bool exit = false;
-	while (!exit)
+	while (true)
 	{
-		printf("1 - login\n");
-		printf("2 - register\n");
-		printf("3 - look at peepee\n");
-		printf("4 - exit\n");
-
-		char pressedButton = _getch();
-
-		switch (pressedButton)
+		if (this->currentUser() == NULL)
 		{
-		case '1': {
-			runSpace(new LoginSpace);
-			break;
-		}
-		case '2': {
-			runSpace(new Register);
-			break;
-		}
-		case '3': {
-			if (this->currentUser() == NULL)
-				std::cout << "Register for free!\n";
-			else
-				std::cout << "Hello, " + this->currentUser()->getName() + "! Welcome back!\n";
-			break;
-		}
-		case '4': {
-			return;
-		}
+			spaces = {
+				_login,
+				_register
+			};
+			labels = {
+				"Log in",
+				"Register",
 
-		default: 
-			break;
+				"Exit"
+			};
 		}
+		else
+			switch (this->currentUser()->getAccessLevel())
+			{
+			case User::AccessLevel::ADMIN:
+				spaces = {
+				_logout
+				};
+				labels = {
+					"Log out",
+
+					"Exit"
+				};
+				break;
+			case User::AccessLevel::MODERATOR:
+				spaces = {
+				_logout
+				};
+				labels = {
+					"Log out",
+
+					"Exit"
+				};
+				break;
+			case User::AccessLevel::REGISTERED_USER:
+				spaces = {
+				_logout
+				};
+				labels = {
+					"Log out",
+
+					"Exit"
+				};
+				break;
+			default:
+				printf("MAIN MENU USER ACCESSLEVEL DEFINITION ERROR\n");
+				return;
+			}
+
+		auto choice = Printer::menu(labels);
+
+		if (choice == labels.size() - 1) // chose "Exit"
+			return;
+
+		runSpace(spaces[choice]());
 	}
 }

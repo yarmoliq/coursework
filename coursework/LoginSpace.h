@@ -11,5 +11,4 @@ class LoginSpace final : public Space
 };
 
 
-
 #endif // !_LOGIN_SPACE_
