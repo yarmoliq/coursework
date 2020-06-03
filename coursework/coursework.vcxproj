@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddFP.cpp" />
     <ClCompile Include="Arguments.cpp" />
     <ClCompile Include="Collection.cpp" />
     <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="FileReadWrite.cpp" />
+    <ClCompile Include="FootballPlayer.cpp" />
     <ClCompile Include="LoginSpace.cpp" />
     <ClCompile Include="Logout.cpp" />
     <ClCompile Include="main.cpp" />
@@ -34,12 +36,15 @@
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="Utilities.cpp" />
+    <ClCompile Include="ViewFP.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddFP.h" />
     <ClInclude Include="Arguments.h" />
     <ClInclude Include="Collection.h" />
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="FileReadWrite.h" />
+    <ClInclude Include="FootballPlayer.h" />
     <ClInclude Include="LoginSpace.h" />
     <ClInclude Include="Logout.h" />
     <ClInclude Include="MainMenu.h" />
@@ -51,6 +56,7 @@
     <ClInclude Include="Space.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Utilities.h" />
+    <ClInclude Include="ViewFP.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -24,10 +24,10 @@ public:
 
 	bool operator==(const Object& other);
 
-//protected:
-	
 	// converts an object into Arguments
 	virtual Arguments arguments() const = 0;
+	
+protected:
 
 	unsigned int _id = 0;
 

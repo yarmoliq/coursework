@@ -6,6 +6,7 @@
 
 #include "DataBase.h"
 #include "myInput.h"
+#include "Printer.h"
 //#include "Session.h"
 
 void LoginSpace::MAIN()
@@ -65,4 +66,5 @@ void LoginSpace::MAIN()
 
 	//update session's current user
 	this->updateSessionUser(user);
+	Printer::printLine("Welcome back, " + user->getName() + "!");
 }
