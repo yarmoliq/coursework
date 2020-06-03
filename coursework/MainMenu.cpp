@@ -9,12 +9,18 @@
 #include "Printer.h"
 #include "AddFP.h"
 #include "ViewFP.h"
+#include "ChangeUser.h"
+#include "ChangeMyInfo.h"
+#include "Individual.h"
 
 Space* _login() { return new LoginSpace; }
 Space* _logout() { return new Logout; }
 Space* _register() { return new Register; }
 Space* _addFP() { return new AddFP; }
 Space* _viewFP() { return new ViewFP; }
+Space* _changeUser() { return new ChangeUser; }
+Space* _changeMe() { return new ChangeMyInfo; }
+Space* _individual() { return new Individual; }
 
 std::vector<Space* (*)()> spaces; 
 std::vector<std::string> labels;
@@ -28,12 +34,14 @@ void MainMenu::MAIN()
 			spaces = {
 				_login,
 				_register,
-				_viewFP
+				_viewFP,
+				_individual
 			};
 			labels = {
 				"Log in",
 				"Register",
 				"View players",
+				"Best players",
 
 				"Exit"
 			};
@@ -45,12 +53,18 @@ void MainMenu::MAIN()
 				spaces = {
 				_logout,
 				_viewFP,
-				_addFP
+				_addFP,
+				_changeUser,
+				_changeMe,
+				_individual
 				};
 				labels = {
 					"Log out",
 					"View players",
 					"Add a new player",
+					"Change user's info",
+					"Edit my profile",
+					"Best players",
 
 					"Exit"
 				};
@@ -58,11 +72,15 @@ void MainMenu::MAIN()
 			case User::AccessLevel::MODERATOR:
 				spaces = {
 				_logout,
-				_viewFP
+				_viewFP,
+				_changeMe,
+				_individual
 				};
 				labels = {
 					"Log out",
 					"View players",
+					"Edit my profile",
+					"Best players",
 
 					"Exit"
 				};
@@ -70,11 +88,15 @@ void MainMenu::MAIN()
 			case User::AccessLevel::REGISTERED_USER:
 				spaces = {
 				_logout,
-				_viewFP
+				_viewFP,
+				_changeMe,
+				_individual
 				};
 				labels = {
 					"Log out",
 					"View players",
+					"Edit my profile",
+					"Best players",
 
 					"Exit"
 				};

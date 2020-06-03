@@ -119,8 +119,13 @@ unsigned int Printer::menu(const std::vector<std::string> menuItems)
 		if (choice >= '1' and choice <= '9')
 		{
 			std::string s = std::string(1, choice);
-			Printer::printLine(s);
-			return (int)choice - '1';
+
+			unsigned int res = (int)choice - '1';
+			if (res < menuItems.size())
+			{
+				Printer::printLine(s);
+				return res;
+			}
 		}
 	}
 

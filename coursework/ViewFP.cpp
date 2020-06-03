@@ -17,7 +17,7 @@ void ViewFP::MAIN()
 	// reading
 	while (succ != 2)
 	{
-		// getting a player. NULL if failed. // succ = 2 if reached the end
+		// getting a player. NULL if failed. // succ = 2 if checked all players
 		Arguments fake({ "", "", "", "", "", "", "", "" });
 		auto player = DataBase::getCollection("FootballPlayers")->getNext<FootballPlayer>(succ, fake);
 
@@ -45,8 +45,8 @@ void ViewFP::MAIN()
 		"Name",
 		"Birthday",
 		"Matches",
-		"Passes",
 		"Goals",
+		"Passes",
 		"YC",
 		"RC"
 	};

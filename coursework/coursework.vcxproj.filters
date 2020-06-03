@@ -72,6 +72,15 @@
     <ClCompile Include="ViewFP.cpp">
       <Filter>Spaces</Filter>
     </ClCompile>
+    <ClCompile Include="ChangeUser.cpp">
+      <Filter>Spaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeMyInfo.cpp">
+      <Filter>Spaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Individual.cpp">
+      <Filter>Spaces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myInput.h">
@@ -126,6 +135,15 @@
       <Filter>Spaces</Filter>
     </ClInclude>
     <ClInclude Include="ViewFP.h">
+      <Filter>Spaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeUser.h">
+      <Filter>Spaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeMyInfo.h">
+      <Filter>Spaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Individual.h">
       <Filter>Spaces</Filter>
     </ClInclude>
   </ItemGroup>

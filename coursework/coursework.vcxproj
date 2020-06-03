@@ -21,10 +21,13 @@
   <ItemGroup>
     <ClCompile Include="AddFP.cpp" />
     <ClCompile Include="Arguments.cpp" />
+    <ClCompile Include="ChangeMyInfo.cpp" />
+    <ClCompile Include="ChangeUser.cpp" />
     <ClCompile Include="Collection.cpp" />
     <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="FileReadWrite.cpp" />
     <ClCompile Include="FootballPlayer.cpp" />
+    <ClCompile Include="Individual.cpp" />
     <ClCompile Include="LoginSpace.cpp" />
     <ClCompile Include="Logout.cpp" />
     <ClCompile Include="main.cpp" />
@@ -41,10 +44,13 @@
   <ItemGroup>
     <ClInclude Include="AddFP.h" />
     <ClInclude Include="Arguments.h" />
+    <ClInclude Include="ChangeMyInfo.h" />
+    <ClInclude Include="ChangeUser.h" />
     <ClInclude Include="Collection.h" />
     <ClInclude Include="DataBase.h" />
     <ClInclude Include="FileReadWrite.h" />
     <ClInclude Include="FootballPlayer.h" />
+    <ClInclude Include="Individual.h" />
     <ClInclude Include="LoginSpace.h" />
     <ClInclude Include="Logout.h" />
     <ClInclude Include="MainMenu.h" />
