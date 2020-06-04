@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="AddFP.cpp" />
     <ClCompile Include="Arguments.cpp" />
+    <ClCompile Include="ChangeFP.cpp" />
     <ClCompile Include="ChangeMyInfo.cpp" />
     <ClCompile Include="ChangeUser.cpp" />
     <ClCompile Include="Collection.cpp" />
@@ -44,6 +45,7 @@
   <ItemGroup>
     <ClInclude Include="AddFP.h" />
     <ClInclude Include="Arguments.h" />
+    <ClInclude Include="ChangeFP.h" />
     <ClInclude Include="ChangeMyInfo.h" />
     <ClInclude Include="ChangeUser.h" />
     <ClInclude Include="Collection.h" />

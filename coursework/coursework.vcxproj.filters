@@ -81,6 +81,9 @@
     <ClCompile Include="Individual.cpp">
       <Filter>Spaces</Filter>
     </ClCompile>
+    <ClCompile Include="ChangeFP.cpp">
+      <Filter>Spaces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myInput.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="Individual.h">
       <Filter>Spaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeFP.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
