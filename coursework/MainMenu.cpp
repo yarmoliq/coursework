@@ -36,13 +36,11 @@ void MainMenu::MAIN()
 			spaces = {
 				_login,
 				_register,
-				_viewFP,
 				_individual
 			};
 			labels = {
 				"Log in",
 				"Register",
-				"View players",
 				"Best players",
 
 				"Exit"

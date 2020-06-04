@@ -150,7 +150,7 @@
       <Filter>Spaces</Filter>
     </ClInclude>
     <ClInclude Include="ChangeFP.h">
-      <Filter>Header Files</Filter>
+      <Filter>Spaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

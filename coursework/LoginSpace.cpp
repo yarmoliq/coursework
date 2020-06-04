@@ -33,7 +33,7 @@ void LoginSpace::MAIN()
 		while(pressedButton != '1' and pressedButton != '2')
 			pressedButton = _getch();
 
-		if (pressedButton == 2)
+		if (pressedButton == '2')
 			return;
 
 		printf("Enter your login: ");
@@ -57,7 +57,7 @@ void LoginSpace::MAIN()
 		while (pressedButton != '1' and pressedButton != '2' and pressedButton != '3')
 			pressedButton = _getch();
 
-		if (pressedButton == 3)
+		if (pressedButton == '3')
 			return;
 
 		printf("Enter your password: ");

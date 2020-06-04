@@ -1,6 +1,8 @@
 #Directories
 .vs/
 Debug/
+Release/
 coursework/Debug/
+coursework/Release/
 coursework/TESTS/
 coursework/DATABASE/
