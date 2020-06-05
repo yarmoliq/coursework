@@ -82,7 +82,8 @@ void Printer::printObject(const std::vector<std::string>& object,
 	for (size_t i = 0; i < object.size() - 1; i++)
 	{
 		Printer::print(object[i], alignments[i], buffers[i]);
-		printf(&separator);
+		auto temp_str = std::string(1, separator);
+		printf(temp_str.c_str());
 	}
 	auto last = object.size() - 1;
 	Printer::print(object[last], alignments[last], buffers[last]);
