@@ -13,6 +13,7 @@
 #include "ChangeMyInfo.h"
 #include "Individual.h"
 #include "ChangeFP.h"
+#include "PrintUsers.h"
 
 Space* _login() { return new LoginSpace; }
 Space* _logout() { return new Logout; }
@@ -23,6 +24,7 @@ Space* _changeUser() { return new ChangeUser; }
 Space* _changeFP() { return new ChangeFP; }
 Space* _changeMe() { return new ChangeMyInfo; }
 Space* _individual() { return new Individual; }
+Space* _printUsers() { return new PrintUsers; }
 
 std::vector<Space* (*)()> spaces; 
 std::vector<std::string> labels;
@@ -55,6 +57,7 @@ void MainMenu::MAIN()
 				_viewFP,
 				_addFP,
 				_changeFP,
+				_printUsers,
 				_changeUser,
 				_changeMe,
 				_individual
@@ -64,6 +67,7 @@ void MainMenu::MAIN()
 					"View players",
 					"Add a new player",
 					"Change players info",
+					"View users",
 					"Change user's info",
 					"Edit my profile",
 					"Best players",

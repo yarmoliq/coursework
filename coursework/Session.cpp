@@ -35,14 +35,3 @@ void Session::updateUser(User* user)
 	delete currentUser;
 	currentUser = user;
 }
-
-//void Session::addToQueue(Space* newSpace)
-//{
-//	spacesQueue.push(newSpace);
-//}
-//
-//void Session::popSpace()
-//{
-//	delete spacesQueue.front();
-//	spacesQueue.pop();
-//}

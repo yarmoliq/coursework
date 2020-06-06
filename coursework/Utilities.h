@@ -15,7 +15,8 @@ namespace utls
     std::vector<std::string> toLower(std::vector<std::string> in);
 
 	template <typename ElemType, typename MemberType>
-	void sort(std::vector<ElemType>& vec, MemberType(ElemType::* member)() const, bool ascending = true)
+	void sort(std::vector<ElemType>& vec, MemberType member, bool ascending = true)
+	//void sort(std::vector<ElemType>& vec, MemberType(ElemType::* member)() const, bool ascending = true)
 	{
 		for (int j = 0; j < vec.size() - 1; ++j)
 			for (int i = 0; i < vec.size() - j - 1; ++i)
