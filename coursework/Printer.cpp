@@ -2,6 +2,8 @@
 
 #include <conio.h>
 
+#include "myInput.h"
+
 std::vector<std::string> Printer::convert(const Object* const obj)
 {
 	auto args = obj->arguments();
@@ -111,23 +113,12 @@ unsigned int Printer::menu(const std::vector<std::string> menuItems)
 	}
 	printf(" >> ");
 
-	char choice = size;
-
 	while (true)
 	{
-		choice = _getch();
+		auto choice = myInput::Input<unsigned int>();
 
-		if (choice >= '1' and choice <= '9')
-		{
-			std::string s = std::string(1, choice);
-
-			unsigned int res = (int)choice - '1';
-			if (res < menuItems.size())
-			{
-				Printer::printLine(s);
-				return res;
-			}
-		}
+		if (choice >= 1 and choice <= menuItems.size())
+			return choice - 1;
 	}
 
 	return 0;

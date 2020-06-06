@@ -85,7 +85,10 @@
       <Filter>Spaces</Filter>
     </ClCompile>
     <ClCompile Include="PrintUsers.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Spaces</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchUsers.cpp">
+      <Filter>Spaces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +159,10 @@
       <Filter>Spaces</Filter>
     </ClInclude>
     <ClInclude Include="PrintUsers.h">
-      <Filter>Header Files</Filter>
+      <Filter>Spaces</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchUsers.h">
+      <Filter>Spaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

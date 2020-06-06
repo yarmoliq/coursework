@@ -14,6 +14,7 @@
 #include "Individual.h"
 #include "ChangeFP.h"
 #include "PrintUsers.h"
+#include "SearchUsers.h"
 
 Space* _login() { return new LoginSpace; }
 Space* _logout() { return new Logout; }
@@ -25,6 +26,7 @@ Space* _changeFP() { return new ChangeFP; }
 Space* _changeMe() { return new ChangeMyInfo; }
 Space* _individual() { return new Individual; }
 Space* _printUsers() { return new PrintUsers; }
+Space* _searchUsers() { return new SearchUsers; }
 
 std::vector<Space* (*)()> spaces; 
 std::vector<std::string> labels;
@@ -58,6 +60,7 @@ void MainMenu::MAIN()
 				_addFP,
 				_changeFP,
 				_printUsers,
+				_searchUsers,
 				_changeUser,
 				_changeMe,
 				_individual
@@ -68,6 +71,7 @@ void MainMenu::MAIN()
 					"Add a new player",
 					"Change players info",
 					"View users",
+					"Search users",
 					"Change user's info",
 					"Edit my profile",
 					"Best players",

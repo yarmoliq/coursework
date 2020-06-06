@@ -37,6 +37,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PrintUsers.cpp" />
     <ClCompile Include="Register.cpp" />
+    <ClCompile Include="SearchUsers.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="User.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="PrintUsers.h" />
     <ClInclude Include="Register.h" />
+    <ClInclude Include="SearchUsers.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="User.h" />
