@@ -23,6 +23,8 @@ namespace utls
 				if (((vec[i].*member)() < (vec[i + 1].*member)()) ^ ascending)
 					std::swap(vec[i], vec[i + 1]);
 	}
+
+	std::string secretInput();
 }
 
 

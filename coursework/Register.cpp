@@ -5,6 +5,7 @@
 #include "DataBase.h"
 #include "myInput.h"
 #include "Printer.h"
+#include "Utilities.h"
 
 void Register::MAIN()
 {
@@ -27,8 +28,8 @@ void Register::MAIN()
 			getUser = DataBase::getCollection("Users")->getByUniqueArg<User>(login, 2);
 		}
 
-		printf("Enter password: ");
-		auto password = myInput::Input<std::string>();
+		printf("Enter password:\n");
+		auto password = utls::secretInput();//myInput::Input<std::string>();
 
 		User newUser(Arguments({
 			"0", "1", login, password, name

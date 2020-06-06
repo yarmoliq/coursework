@@ -8,6 +8,7 @@
 #include "Arguments.h"
 #include "myInput.h"
 #include "DataBase.h"
+#include "Utilities.h"
 
 void ChangeMyInfo::MAIN()
 {
@@ -47,8 +48,8 @@ void ChangeMyInfo::MAIN()
 	}
 	else
 	{
-		Printer::print("Enter new password:");
-		auto password = myInput::Input<std::string>();
+		Printer::printLine("Enter new password:");
+		auto password = utls::secretInput();//myInput::Input<std::string>();
 
 		Arguments newArgs(
 			{
@@ -69,7 +70,7 @@ void ChangeMyInfo::MAIN()
 		return;
 	}
 
-	Printer::print("Enter your current password to confirm changes:");
+	Printer::printLine("Enter your current password to confirm changes:");
 	auto currentPassword = myInput::Input<std::string>();
 
 	if (currentPassword == this->currentUser()->getPassword())

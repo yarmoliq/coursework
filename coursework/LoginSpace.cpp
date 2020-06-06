@@ -7,7 +7,7 @@
 #include "DataBase.h"
 #include "myInput.h"
 #include "Printer.h"
-//#include "Session.h"
+#include "Utilities.h"
 
 void LoginSpace::MAIN()
 {
@@ -41,8 +41,8 @@ void LoginSpace::MAIN()
 		user = DataBase::getCollection("Users")->getByUniqueArg<User>(login, 2);
 	}
 
-	printf("Enter your password: ");
-	auto password = myInput::Input<std::string>();
+	printf("Enter your password:\n");
+	auto password = utls::secretInput();//myInput::Input<std::string>();
 
 	while (user->getPassword() != password)
 	{
@@ -60,8 +60,8 @@ void LoginSpace::MAIN()
 		if (pressedButton == '3')
 			return;
 
-		printf("Enter your password: ");
-		password = myInput::Input<std::string>();
+		printf("Enter your password:\n");
+		password = utls::secretInput();//myInput::Input<std::string>();
 	}
 
 	//update session's current user
